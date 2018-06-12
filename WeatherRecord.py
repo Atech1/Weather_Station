@@ -1,0 +1,69 @@
+from peewee import *
+import Settings
+import time
+import inspect
+from datetime import datetime
+from random import Random
+
+db = SqliteDatabase(None)
+init = False
+
+class WeatherRecord(Model):
+    Time = DateTimeField()
+    Humidity = FloatField()
+    Temperature = FloatField()
+    Pressure = FloatField()
+    WindSpeed = FloatField()
+
+    def display(self):
+        return "Temperature: {} C {} F, Humidity: {} %\n, Dew Point: {} C,  Pressure {} Pa, Time: {}".format(
+            self.Temperature, self.Farenhieght, self.Humidity, self.DewPoint, self.Pressure, self.Time)
+    
+    def getAttr(self, attr):
+        return getattr(self, attr)
+    
+    def __getattr__(self, attr):
+        return None
+    
+    @staticmethod
+    def CtoF(temp):
+        return ((9.0/5.0) * temp) + 32
+
+    @property
+    def Farenhieght(self):
+        return self.CtoF(self.Temperature)
+
+    @property
+    def DewPoint(self):
+        return self.Temperature - (100-self.Humidity)/(5)
+    
+    @property
+    def DewPointF(self):
+        return self.CtoF(self.DewPoint)
+
+    class Meta:
+        database = db
+
+def initialize(): # do this only once
+    global init
+    if init is False:
+        if Settings.DATA_LOGGING_ON:
+            db.init(Settings.DB_FILE)
+            db.create_tables([WeatherRecord], safe=True)
+            db.close()
+        else:
+            db.init(":memory:")
+            db.create_tables([WeatherRecord], safe=True)
+            db.close()
+    return
+
+def Test():
+    initialize()
+    record = WeatherRecord.select().get()
+    for name in ['Humidity', 'Temperature', 'DewPoint', 'DewPointF', 'Thing']:
+        print(record.getAttr(name))
+
+
+
+if __name__ == '__main__':
+    Test()

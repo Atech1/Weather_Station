@@ -1,0 +1,1 @@
+{"py/object": "__main__.Settings", "DATA_LOGGING_ON": true, "DB_FILE": "Weather_Data.db", "GRAPHING_KEY": "s5rOqZu8dwFdDrwriB5u", "GRAPHING_ON": true, "GRAPH_NAMES": ["Humidity", "Temperature", "Pressure"], "GRAPH_URIs": {}, "OFFLINE": true, "USERNAME": "studentAl"}
