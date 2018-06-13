@@ -7,7 +7,8 @@
 
 
 
-Open Source Weather Station made with support of the Heritage Public Library
+Open Source Weather Station made with support of the Heritage Public Library.
+This is still in production for at least another week before full intructions and full features will be released (6/12/18)
 
 for basic setup only edit the settings.json file
 
