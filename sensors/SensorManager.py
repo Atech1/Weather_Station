@@ -3,12 +3,15 @@ from sensors.barometer_class import Barometer
 import time
 from datetime import datetime
 from WeatherRecord import WeatherRecord, initialize
+from settings import get_settings
 
 class SensorManager(object):
 
     def __init__(self):
+        settings = get_settings()
         self.dht = DHT(5)
-        self.barom = Barometer()
+        if settings.BAROMETER_MODEL == "BMP085":
+            self.barom = Barometer()
 
     def record(self):
         pressure, temp1 = self.barom.read()

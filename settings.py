@@ -7,10 +7,11 @@ import copy
 class Settings(object):
 
     def __init__(self):
+        self.BAROMETER_MODEL = "BMP085"
         self.DATA_LOGGING_ON = True # this will record to :memory: if False
         self.DB_FILE = "Weather_Data.db" # name of the file saved to.
-
         self.OFFLINE = False
+
         self.GRAPHING_ON = True
         self.GRAPH_NAMES = ["Humidity", "Temperature", "Pressure"]
         self.USERNAME = "studentAl"
@@ -24,7 +25,7 @@ class Settings(object):
         return
 
     def save(self):
-        this = jsonpickle.encode(self, unpicklable=False)
+        this = json.dumps(json.loads(jsonpickle.encode(self, unpicklable=False)), indent=4)
         with open("settings.json", 'w') as setting_file:
             setting_file.write(this)
         return

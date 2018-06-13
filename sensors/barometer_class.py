@@ -1,10 +1,9 @@
-import Adafruit_BMP.BMP085 as BMP
 import time
 
 class Barometer(object):
     
-    def __init__(self):
-        self.sensor = BMP.BMP085()
+    def __init__(self, sensor = None):
+        self.sensor = sensor
 
     def read(self):
         temp = self.sensor.read_temperature()
@@ -12,15 +11,5 @@ class Barometer(object):
         return pressure, temp
     
     def destroy(self):
-        #GPIO.cleanup()
+        # GPIO.cleanup()
         return
-
-if __name__ == "__main__":
-    barom = Barometer()
-    while(True):
-        try:
-            print(barom.read())
-            time.sleep(0.5)
-        except KeyboardInterrupt:
-            barom.destroy()
-            
