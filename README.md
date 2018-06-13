@@ -12,4 +12,21 @@ This is still in production for at least another week before full intructions an
 
 for basic setup only edit the settings.json file
 
+# required parts
+  a DHT sensor- this project was setup specifically with the cheaper DHT11 sensor, but a DHT22 would work. (https://www.adafruit.com/product/386)
+  
+  A BMP sensor- this project uses a BMP085, but those are discontinued as well as the BMP180 which shares it's interface. If you can't get your hands on one of those, You will need to go with a BMP280 which is currently unsupported by this project, but will be in the future.
+  (https://www.adafruit.com/product/2651)
+  
+  A wind sensor - TBD
+  
+  The graphing functionality requires a plotly account to function, but it is optional and can be turned off.
+  
+  The project will also allow you to join the CWOP - also intructions to be written
+  
+  
+  
+  
+
+
 [![HitCount](http://hits.dwyl.io/ATech1/Weather_Station.svg)](http://hits.dwyl.io/Atech1/Weather_Station)
