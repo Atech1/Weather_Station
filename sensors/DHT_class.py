@@ -108,6 +108,7 @@ class DHT(object):
     def read(self): # try to always use this method, as it is safe.
         result = self.read_binary()
         while(result == False):
+                time.sleep(1) # the DHT11 only has a 1Hz out rate
             result = self.read_binary()
         return result
             

@@ -2,13 +2,13 @@ from WeatherRecord import WeatherRecord, initialize
 from graphing.GraphManager import GraphManager
 from random import Random
 from datetime import datetime, date
-import Settings
+from settings import get_settings
 
 
 def make_test_data(s,time, r):
     for m in range(s, time):
         for d in range(1, 28):
-            for h in range(1, 23):
+            for h in range(1, 23, 4):
                 data = sensor_test_data(r)
                 WeatherRecord.create(Temperature=data[0], Humidity=data[1], Pressure=data[2], Time=datetime(2015, m, d, h), WindSpeed=0)
 

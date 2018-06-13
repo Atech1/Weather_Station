@@ -3,12 +3,17 @@ import plotly.graph_objs as go
 from plotly.tools import set_credentials_file
 from graphing.GraphModel import GraphModel
 from WeatherRecord import WeatherRecord, initialize
-import Settings
+from settings import get_settings
+import settings
 
 class GraphManager(object):
     def __init__(self):
-        set_credentials_file(username=Settings.USERNAME, api_key=Settings.GRAPHING_KEY)
-        self.graphs = {name:GraphModel(title=name) for name in Settings.GRAPH_NAMES}
+        self.settings = get_settings()
+        set_credentials_file(username=self.settings.USERNAME, api_key=self.settings.GRAPHING_KEY)
+        if len(self.settings.GRAPH_URIs) > 1:
+            self.graphs = {name:GraphModel(title=name, uri=self.settings.GRAPH_URIs[name]) for name in self.settings.GRAPH_URIs.keys()}
+        else:
+            self.graphs = {name:GraphModel(title=name, uri=None) for name in self.settings.GRAPH_NAMES}
     
     def update_graphs(self):
         for graph in self.graphs.keys():
@@ -20,6 +25,7 @@ class GraphManager(object):
                 data = []
                 for d in WeatherRecord.select().order_by(WeatherRecord.Time): data.append(d)
                 self.graphs[graph].create_new(self.fill_in_data(self.graphs[graph].title, data))
+        self.save()
         return
     
     def fill_in_data(self, name, data):
@@ -34,5 +40,6 @@ class GraphManager(object):
 
     def save(self):
         for graph in self.graphs.keys():
-            Settings.GRAPH_URIs.append(self.graphs[graph].uri)
+            self.settings.GRAPH_URIs[graph] = self.graphs[graph].uri
+        self.settings.save()
         return

@@ -2,6 +2,7 @@
 import sqlite3
 import json
 import jsonpickle
+import copy
 
 class Settings(object):
 
@@ -15,14 +16,12 @@ class Settings(object):
         self.USERNAME = "studentAl"
         self.GRAPHING_KEY = "s5rOqZu8dwFdDrwriB5u" # make a plotly account and find the key
         self.GRAPH_URIs = {}
-        self = self.load()
-        print(self.OFFLINE)
 
     def load(self):
         with open("settings.json", 'r') as setting_file:
-            self = jsonpickle.decode(setting_file.read())
-            print(self.OFFLINE)
-            return self
+            obj = jsonpickle.decode(setting_file.read())
+        self.__dict__.update(obj)
+        return
 
     def save(self):
         this = jsonpickle.encode(self, unpicklable=False)
@@ -30,9 +29,13 @@ class Settings(object):
             setting_file.write(this)
         return
 
-def main():
-    settings = Settings()
-    print(settings.OFFLINE)
 
-if __name__ == '__main__':
-    main()
+settings = Settings()
+settings.load()
+
+def get_settings():
+    return settings
+
+if __name__ == '__main__': # example of how to use this class
+    settings = get_settings()
+    print(settings.OFFLINE)

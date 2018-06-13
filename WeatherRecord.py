@@ -1,5 +1,5 @@
 from peewee import *
-import Settings
+from settings import get_settings
 import time
 import inspect
 from datetime import datetime
@@ -7,6 +7,7 @@ from random import Random
 
 db = SqliteDatabase(None)
 init = False
+settings = get_settings()
 
 class WeatherRecord(Model):
     Time = DateTimeField()
@@ -45,10 +46,10 @@ class WeatherRecord(Model):
         database = db
 
 def initialize(): # do this only once
-    global init
+    global init, settings
     if init is False:
-        if Settings.DATA_LOGGING_ON:
-            db.init(Settings.DB_FILE)
+        if settings.DATA_LOGGING_ON:
+            db.init(settings.DB_FILE)
             db.create_tables([WeatherRecord], safe=True)
             db.close()
         else:

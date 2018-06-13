@@ -5,7 +5,7 @@ from datetime import date, datetime
 
 class GraphModel(object):
 
-    def __init__(self, title):
+    def __init__(self, title, uri = None):
         self.title = title
         self.uri = None
     
