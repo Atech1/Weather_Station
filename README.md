@@ -10,3 +10,5 @@
 Open Source Weather Station made with support of the Heritage Public Library
 
 for basic setup only edit the settings.json file
+
+[![HitCount](http://hits.dwyl.io/ATech1/Weather_Station.svg)](http://hits.dwyl.io/Atech1/Weather_Station)
