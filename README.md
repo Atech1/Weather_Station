@@ -25,8 +25,16 @@ for basic setup only edit the settings.json file
   The project will also allow you to join the CWOP - also intructions to be written
   
   
-  
-  
-
+  # How to Install:
+  You can install this code on your Raspberry pi by going into the bash terminal and writing:
+```  
+git clone https://github/Atech1/Weather_Station
+```
+  and then typing
+```
+  cd Weather_Station
+  pip install -r requirements.txt
+```
+ 
 
 [![HitCount](http://hits.dwyl.io/ATech1/Weather_Station.svg)](http://hits.dwyl.io/Atech1/Weather_Station)
