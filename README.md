@@ -36,5 +36,11 @@ git clone https://github/Atech1/Weather_Station
   pip install -r requirements.txt
 ```
  
+ # Attaching Parts:
+ ![PinMaps](https://docs.microsoft.com/en-us/windows/iot-core/media/pinmappingsrpi/rp2_pinout.png)
+ courtesy of Microsoft
+ 
+use a gnd pi, 5v pin, and the two I2c1 SCL and SDA lines. and an extra Gpio pin, Here I use GPIO 5, but you can change that to whatever in the settings.json
+
 
 [![HitCount](http://hits.dwyl.io/ATech1/Weather_Station.svg)](http://hits.dwyl.io/Atech1/Weather_Station)
