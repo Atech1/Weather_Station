@@ -21,7 +21,7 @@ class SensorManager(object):
         pressure, temp1 = self.barom.read()
         humidity, temp2 = self.dht.read()
         windspeed = self.windsensor.read()
-        time = datetime.now().strftime("%Y-%m-%d %H:%M")
+        time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         WeatherRecord.create(Time=time, Humidity=humidity, Temperature=temp1, Pressure=pressure, WindSpeed=windspeed)
         return
     

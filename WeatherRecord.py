@@ -4,7 +4,6 @@ import time
 import inspect
 from datetime import datetime
 from random import Random
-from math import Round
 
 db = SqliteDatabase(None)
 init = False
@@ -29,7 +28,7 @@ class WeatherRecord(Model):
     
     @staticmethod
     def CtoF(temp):
-        return Round(((9.0/5.0) * temp) + 32, 3)
+        return round(((9.0/5.0) * temp) + 32, 3)
 
     @property
     def Farenhieght(self):
@@ -37,7 +36,7 @@ class WeatherRecord(Model):
 
     @property
     def DewPoint(self):
-        return Round(self.Temperature - (100-self.Humidity)/(5), 3)
+        return round(self.Temperature - (100-self.Humidity)/(5), 3)
     
     @property
     def DewPointF(self):
