@@ -4,6 +4,7 @@ import time
 import inspect
 from datetime import datetime
 from random import Random
+from math import Round
 
 db = SqliteDatabase(None)
 init = False
@@ -17,8 +18,8 @@ class WeatherRecord(Model):
     WindSpeed = FloatField()
 
     def display(self):
-        return "Temperature: {} C {} F, Humidity: {} %\n, Dew Point: {} C,  Pressure {} Pa, Time: {}".format(
-            self.Temperature, self.Farenhieght, self.Humidity, self.DewPoint, self.Pressure, self.Time)
+        return "Temperature: {} C {} F, Humidity: {} %,\n Dew Point: {} C or {} F,  Pressure {} Pa, Time: {}".format(
+            self.Temperature, self.Farenhieght, self.Humidity, self.DewPoint, Self.DewPointF, self.Pressure, self.Time)
     
     def getAttr(self, attr):
         return getattr(self, attr)
@@ -28,7 +29,7 @@ class WeatherRecord(Model):
     
     @staticmethod
     def CtoF(temp):
-        return ((9.0/5.0) * temp) + 32
+        return Round(((9.0/5.0) * temp) + 32, 3)
 
     @property
     def Farenhieght(self):
@@ -36,7 +37,7 @@ class WeatherRecord(Model):
 
     @property
     def DewPoint(self):
-        return self.Temperature - (100-self.Humidity)/(5)
+        return Round(self.Temperature - (100-self.Humidity)/(5), 3)
     
     @property
     def DewPointF(self):
