@@ -5,15 +5,17 @@ import time
 from datetime import datetime
 from WeatherRecord import WeatherRecord, initialize
 from settings import get_settings
+from sensors.BMP085 import BMP085
 
 class SensorManager(object):
 
     def __init__(self):
+        initialize()
         settings = get_settings()
         self.dht = DHT(settings.DHT_PIN)
         self.windsensor = WindSensor()
         if settings.BAROMETER_MODEL == "BMP085":
-            self.barom = Barometer.BMP085()
+            self.barom = BMP085()
 
     def record(self):
         pressure, temp1 = self.barom.read()
@@ -29,7 +31,6 @@ class SensorManager(object):
 
 
 if __name__ == '__main__':
-    initialize()
     manager = SensorManager()
     manager.record()
     manager.recall_all_records()
