@@ -1,6 +1,8 @@
 {
+    "BAROMETER_MODEL": "BMP085",
     "DATA_LOGGING_ON": true,
     "DB_FILE": "Weather_Data.db",
+    "DHT_PIN": 5,
     "GRAPHING_KEY": "s5rOqZu8dwFdDrwriB5u",
     "GRAPHING_ON": true,
     "GRAPH_NAMES": [

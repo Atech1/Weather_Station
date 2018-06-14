@@ -7,6 +7,7 @@ import copy
 class Settings(object):
 
     def __init__(self):
+        self.DHT_PIN = 5
         self.BAROMETER_MODEL = "BMP085"
         self.DATA_LOGGING_ON = True # this will record to :memory: if False
         self.DB_FILE = "Weather_Data.db" # name of the file saved to.
@@ -39,4 +40,5 @@ def get_settings():
 
 if __name__ == '__main__': # example of how to use this class
     settings = get_settings()
+    settings.save()
     print(settings.OFFLINE)
