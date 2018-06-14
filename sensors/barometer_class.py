@@ -1,5 +1,5 @@
 import time
-
+from BMP085 import BMP085
 class Barometer(object):
     
     def __init__(self, sensor = None):
@@ -13,3 +13,7 @@ class Barometer(object):
     def destroy(self):
         # GPIO.cleanup()
         return
+    
+    @staticmethod
+    def BMP085():
+        return BMP085()

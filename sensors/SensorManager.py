@@ -13,7 +13,7 @@ class SensorManager(object):
         self.dht = DHT(settings.DHT_PIN)
         self.windsensor = WindSensor()
         if settings.BAROMETER_MODEL == "BMP085":
-            self.barom = Barometer()
+            self.barom = Barometer.BMP085()
 
     def record(self):
         pressure, temp1 = self.barom.read()
