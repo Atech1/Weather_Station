@@ -20,6 +20,7 @@ class GraphModel(object):
             try:
                 data = py.get_figure(self.uri).get_data()
                 print(data['x'])
+                print(data.index(-1)['x'])
             except: print("graphing didn't work")
             return data.index(-1)['x']
         else:

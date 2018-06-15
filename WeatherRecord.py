@@ -17,7 +17,7 @@ class WeatherRecord(Model):
     WindSpeed = FloatField()
 
     def display(self):
-        return "Temperature: {} C {} F, Humidity: {} %,\n Dew Point: {} C or {} F,  Pressure {} Pa, Time: {}".format(
+        return "Temperature: {} C {} F, Humidity: {} %,\n Dew Point:  {} C or {} F,  Pressure {} Pa, Time: {}".format(
             self.Temperature, self.Farenhieght, self.Humidity, self.DewPoint, self.DewPointF, self.Pressure, self.Time)
     
     def getAttr(self, attr):
