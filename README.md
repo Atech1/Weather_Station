@@ -33,7 +33,7 @@ git clone https://github/Atech1/Weather_Station
   and then typing
 ```
   cd Weather_Station
-  pip install -r requirements.txt
+  pip3 install -r requirements.txt
 ```
  
  # Attaching Parts:
