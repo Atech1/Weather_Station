@@ -7,17 +7,22 @@ import copy
 class Settings(object):
 
     def __init__(self):
+        # this is for sensors
         self.DHT_PIN = 5
         self.BAROMETER_MODEL = "BMP085"
         self.DATA_LOGGING_ON = True # this will record to :memory: if False
         self.DB_FILE = "Weather_Data.db" # name of the file saved to.
         self.OFFLINE = False
-
+        self.ELEVATION = 42 # 42 meters
+        # this is for Graphs
         self.GRAPHING_ON = True
         self.GRAPH_NAMES = ["Humidity", "Temperature", "Pressure"]
         self.USERNAME = "studentAl"
         self.GRAPHING_KEY = "s5rOqZu8dwFdDrwriB5u" # make a plotly account and find the key
         self.GRAPH_URIs = {}
+        # this is for CWOP`
+        self.HOST = " "
+        self.Port = " "
 
     def load(self):
         with open("settings.json", 'r') as setting_file:
