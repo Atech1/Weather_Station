@@ -19,10 +19,9 @@ for basic setup only edit the settings.json file
   (https://www.adafruit.com/product/2651)
   
   A wind sensor - TBD
+ 
   
-  The graphing functionality requires a plotly account to function, but it is optional and can be turned off.
-  
-  The project will also allow you to join the CWOP - also intructions to be written
+  The project will also allow you to join and report to CWOP.
   
   
   # How to Install:
@@ -40,7 +39,18 @@ git clone https://github/Atech1/Weather_Station
  ![PinMaps](https://docs.microsoft.com/en-us/windows/iot-core/media/pinmappingsrpi/rp2_pinout.png)
  courtesy of Microsoft
  
-use a gnd pi, 5v pin, and the two I2c1 SCL and SDA lines. and an extra Gpio pin, Here I use GPIO 5, but you can change that to whatever in the settings.json
+use a gnd pi, 5v pin, and the two I2c1 SCL and SDA lines. and an extra Gpio pin, Here I use GPIO 5, but you can change that to whatever in the settings.json.
+
+You also want to configure which sensor you have and what elevation you are at. (you can easily look this up online).
+You can also configure what the save file will be for the weather data, but it needs no changes default. If you want to join CWOP their is a field for your id in the settings.json. 
+
+# Running
+all you really need to do to run it is to start the Raspberry Pi 3 and then go into the terminal and type:
+```
+sudo python start.py
+```
+that will open a terminal window that will show all of the console commands when connected to a screen for debugging.
+Next, You do the yard setup, putting it in a weather proof casing, power and home wifi, and you are unlikely to need to touch your raspberry pi for months at a time. You may need to restart it once in a while, but this project is mostly autonomous.
 
 
 [![HitCount](http://hits.dwyl.io/ATech1/Weather_Station.svg)](http://hits.dwyl.io/Atech1/Weather_Station)
